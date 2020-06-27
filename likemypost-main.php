@@ -44,7 +44,7 @@ class likeMyPost {
             $getPost .= '<br> <a style="color: pink;" data-event="like" data-post_id="'.get_the_ID().'" href="#/"> Like this post! ';
         }
             $getPost .= '</a><span class="count">'.$this->likeCounter(get_the_ID());
-            $getPost .= ' Likes <p id="load" style="display: none"></p></span></p>';
+            $getPost .= ' Likes <p></p></span></p>';
             $content .= $getPost;
         }
         return $content;

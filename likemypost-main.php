@@ -71,10 +71,14 @@ class likeMyPost {
         $meta_IP = get_post_meta($post_id, '_likers_IP');
         $likers_IP = $meta_IP[0];
         
+        //SAFE ARRAYS (allows us to display the counter as zero when creating a new post - in order to prevent errors)
+        if (!is_array($likers_IP)) {
+            $likers_IP = array();
+        }
         if (in_array($user_IP, $likers_IP)) {
-            return true;
+            return true;                        //ALREADY LIKED (SHOW "like") button
         } else {
-            return false;
+            return false;                       //SHOW "dislike" button
         }
     }
 

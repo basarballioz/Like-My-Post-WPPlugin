@@ -1,0 +1,7 @@
+.getPostLiked {
+    font-size: 1.1em;
+    font-style: italic; 
+    border-style: solid; 
+    border-width: thin;
+    width: 200px;
+}

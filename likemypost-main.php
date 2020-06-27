@@ -32,14 +32,12 @@ class likeMyPost {
     public function register_script() {
         //($handle, $src, $deps, $ver, $media) 
         
-        wp_register_script('lmpScript', plugins_url('js/lmpscript.js', __FILE__), array('jquery'), '3.5.1' );
-        wp_register_style('lmpStyle', plugins_url('css/lmpStyle.css', __FILE__), false, '1.0', 'all');        
+        wp_register_script('lmpScript', plugins_url('js/lmpscript.js', __FILE__), array('jquery'), '3.5.1' );       
         wp_localize_script('lmpScript', 'LMPajax',
         array('ajax_url' => admin_url('admin-ajax.php'), 'nonce' => wp_create_nonce('worldsBestPluginEver'))); //SAFETY
     }
 
     public function loadScripts(){
-        wp_enqueue_style('lmpStyle');
         wp_enqueue_script('lmpScript');
     }
 
@@ -51,7 +49,7 @@ class likeMyPost {
     public function addLikeButton($content) {
         
         if (get_post_type() == is_singular()) {
-            $getPost = '<p class="getPostLiked"> You can, ';
+            $getPost = '<p class="getPostLiked" style="font-size: 1.1em; border-style: solid; border-width: thin; width: 200px"> You can, ';
             
             if ($this->alreadyLiked(get_the_ID())) {
                 $getPost .= '<br> <a style="color: pink;" data-event="dislike" data-post_id="'.get_the_ID().'" href="#/"> Dislike this post ';

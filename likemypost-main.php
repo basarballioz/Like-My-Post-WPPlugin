@@ -71,9 +71,6 @@ class likeMyPost {
         $meta_IP = get_post_meta($post_id, '_likers_IP');
         $likers_IP = $meta_IP[0];
         
-        if (!is_array($likers_IP)) {
-            $likers_IP = array();
-        }
         if (in_array($user_IP, $likers_IP)) {
             return true;
         } else {

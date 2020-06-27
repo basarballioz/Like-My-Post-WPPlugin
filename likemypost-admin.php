@@ -4,7 +4,7 @@ add_action( 'admin_menu', 'admin_menu' );
 
 //Add LikeMyPost tab under posts menu
 function admin_menu() {
-    add_posts_page('Like My Post Dashboard', 'Like My Post', 'activate_plugins', 'likemypost_admin', 'admin_panel');
+    add_menu_page('Like My Post Dashboard', 'Like My Post', 'activate_plugins', 'likemypost_admin', 'admin_panel');
 }
 
 function admin_panel() {

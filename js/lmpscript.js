@@ -8,13 +8,9 @@ jQuery(document).ready(function () {
        if (event == 'like') {
           likeButton.text('Dislike this post!');
           likeButton.data('event','unlike');
-          console.log("Successfully Disliked")
-       }
-       
-       else {
+       } else {
           likeButton.text('Like this post!');
           likeButton.data('event','like');
-          console.log("Successfully Liked")
        }
        
        jQuery.ajax({
@@ -26,11 +22,9 @@ jQuery(document).ready(function () {
                event : event,
                nonce : LMPajax.nonce
            },
-           success :                        //When ends
-                    function (response) {
+           success : function (response) {   //WHEN ENDS
                         jQuery('.count').text(response);
-                        console.log("Done...");
-                    }
+                     }
         });
     });
 });

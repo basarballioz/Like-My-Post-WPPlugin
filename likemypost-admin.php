@@ -2,7 +2,6 @@
 //Builds admin panel page for LikeMyPost
 add_action( 'admin_menu', 'admin_menu' );
 
-
 //Add LikeMyPost tab under posts menu
 function admin_menu() {
     add_posts_page('Like My Post Dashboard', 'Like My Post', 'activate_plugins', 'likemypost_admin', 'admin_panel');
@@ -12,10 +11,7 @@ function admin_panel() {
     if (!current_user_can('activate_plugins')) {                                    //CHECK IF USER ADMIN OR NOT
         wp_die(__( 'You are not allowed to inspect content of this page.'));        //IF NOT THEN SHOW AN ERROR MESSAGE
     }
-
 ?>
-
-
 
     <div class="wrap" style="font-size: 15px; text-align:center;">
         <h3 style="color: #00BFFF; font-size: 30px;"> =Like My Post - Mostly Liked Tags= </h3>
@@ -25,8 +21,6 @@ function admin_panel() {
 
         //Using Wordpress Database Class
         global $wpdb;
-
-
 
         //BUILDING PAGES (https://codex.wordpress.org/Class_Reference/wpdb)
         $counter = "SELECT COUNT(DISTINCT terms.term_id)
@@ -40,29 +34,20 @@ function admin_panel() {
                                 AND postmeta.post_id = relationships.object_id
                                 AND postmeta.meta_key = '_likes_count'";
 
-
-
         $tags = $wpdb->get_var($counter);
         $tag_limit_per_page = 10;
         $page_number = ceil($tags / $tag_limit_per_page);
         $page = isset($_GET['pages']) ? (int) $_GET['pages'] : 1;
 
-
-        if($page < 1) {
+        if ($page < 1) {
             $page = 1;
-        }
-        else if($page > $page_number) {
+        } else if ($page > $page_number) {
             $page = $page_number;
         }
-
-        
 
         $limiter = ($page - 1) * $tag_limit_per_page;
         $current_page = add_query_arg(NULL, NULL);
         ?>
-
-
-
 
         <table class="widefat fixed" style="text-align: center;">
         <thead>
@@ -75,8 +60,6 @@ function admin_panel() {
             </thead>
         <tbody>
 
-
-            
             <?php
             // LISTING TAGS
             $SQLquery = "SELECT A.term_id AS tag_id, A.name, B.count, SUM(C.meta_value) AS like_count
@@ -103,24 +86,17 @@ function admin_panel() {
             </tbody>
         </table>
         
-
-
-        
         <?php
         //SELECTING PAGES FROM FOOTER
         for($i = 1; $i <= $page_number; $i++) {
-            if($page == $i) {
+            if ($page == $i) {
                 echo $i.' ';
-            } 
-            else {
+            } else {
                echo '<a href="'.$current_page.'&pages=' . $i . '">' . $i . '</a> ';
             }
         }
         ?>
-
-
-    </div>
-    
+    </div>  
 <?php 
 
 }

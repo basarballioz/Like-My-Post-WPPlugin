@@ -1,5 +1,4 @@
 <?php
-
 //Easy Link (https://www.wpbeginner.com/wp-tutorials/how-to-create-a-custom-wordpress-widget/  https://codex.wordpress.org/Widgets_API)
 
 class likeMyPostWidget extends WP_Widget {
@@ -9,8 +8,6 @@ class likeMyPostWidget extends WP_Widget {
         $widget_options = array('classname' => 'likeMyPostWidget', 'description' => 'A widget to list top 10 tags');
         parent::__construct('likeMyPostWidget', 'Likemypost - Top 10 Tags', $widget_options);
     }
-
-
 
     //CREATING  WIDGET
     public function widget($args, $instance) {
@@ -23,8 +20,6 @@ class likeMyPostWidget extends WP_Widget {
         $maxTag = $instance['maxTag'];
         $firstSentence = $instance['firstSentence'];
         $secondSentence = $instance['secondSentence'];
-        
-        
         
         $sqlQuery = "SELECT A.term_id AS tag_id, A.name, SUM(D.meta_value) AS like_count     /*tableName.columName*/
                 FROM $wpdb->terms AS A, 
@@ -40,7 +35,6 @@ class likeMyPostWidget extends WP_Widget {
                 ORDER BY like_count DESC
                 LIMIT $limiter, $maxTag";           //From 0 to $limit value
 
-        
         //Fix widget appearance
         echo $args['before_widget'] . $args['before_title'] . $title . $args['after_title'];
         
@@ -55,10 +49,6 @@ class likeMyPostWidget extends WP_Widget {
         echo $args['after_widget'];
     }
 
-
-
-
-
     //BACK-END WIDGER ($this = class likeMyPostWidget extends WP_Widget)
     public function form($instance) {
         echo $this->createInput($instance,'maxTag');
@@ -66,10 +56,6 @@ class likeMyPostWidget extends WP_Widget {
         echo $this->createInput($instance,'firstSentence');
         echo $this->createInput($instance,'secondSentence');
     }
-
-
-
-
 
     //UPDATE INSTANCES
     public function update($new_instance, $old_instance) {
@@ -81,10 +67,6 @@ class likeMyPostWidget extends WP_Widget {
         return $instance;
     }
 
-
-
-
-
     //CREATING INPUT FOR FORM
     public function createInput($instance, $field) {
         $value = !empty($instance[$field]) ? $instance[$field] : ' ';
@@ -95,10 +77,7 @@ class likeMyPostWidget extends WP_Widget {
         $input .= "value='".esc_attr($value)."'> </p>";
         return $input;
     }
-
 }
-
-
 
 //INITIALIZING WIDGET
 add_action('widgets_init', function(){

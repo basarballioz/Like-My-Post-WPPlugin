@@ -67,7 +67,7 @@ class likeMyPost {
 
     //IP CONTROL FOR ALREADY LIKED
     public function alreadyLiked($post_id) {
-        $user_IP = $_SERVER['REMOTE_ADDR'];
+        $user_IP = $_SERVER['REMOTE_ADDR'] . $_SERVER['HTTP_USER_AGENT'];
         $meta_IP = get_post_meta($post_id, '_likers_IP');
         $likers_IP = $meta_IP[0];
         
@@ -85,7 +85,7 @@ class likeMyPost {
     //LIKING POSTS BY USING $POSTID
     public function likePost($post_id) {
         $likes_count = $this->likeCounter($post_id);
-        $user_IP = $_SERVER['REMOTE_ADDR'];
+        $user_IP = $_SERVER['REMOTE_ADDR'] . $_SERVER['HTTP_USER_AGENT'];
         $meta_IP = get_post_meta($post_id,'_likers_IP');
         $likers_IP = $meta_IP[0];
 
@@ -108,7 +108,7 @@ class likeMyPost {
     public function dislikePost($post_id) {
         
         $likes_count = $this->likeCounter($post_id);
-        $user_IP = $_SERVER['REMOTE_ADDR'];
+        $user_IP = $_SERVER['REMOTE_ADDR'] . $_SERVER['HTTP_USER_AGENT'];
         $meta_IP = get_post_meta($post_id,'_likers_IP');
         $likers_IP = $meta_IP[0];
 

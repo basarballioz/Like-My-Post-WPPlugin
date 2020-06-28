@@ -19,7 +19,7 @@ With this plugin, you'll be able to put the like button under all the posts on y
 ## Installation
 You can install this plugin in a couple of different ways on your Wordpress website,
 
-- **First you need to insall zip file of plugin: [Download Now (.zip)](https://github.com/basarballioz/Like-My-Post-WPPlugin/releases/download/V1.0/Like-My-Post-WPPlugin.zip)**
+- **First you need to insall zip file of plugin: [Download Now (.zip)](https://github.com/basarballioz/Like-My-Post-WPPlugin/releases/download/V1.1/Like-My-Post-WPPlugin-master.zip)**
 
   - **1.** Plugin can be installed by using Wordpress plugin installer. All you have to do is follow this path from dashboard of the wordpress: `Plugins > Add New > Upload Plugin  > Choose File > Choose your plugin file (likemypost-plugin.zip) > Install Now > Activate Plugin`
 

@@ -25,6 +25,8 @@ jQuery(document).ready(function () {
            success : function (response) {   //WHEN ENDS
                         jQuery('.count').text(response);
                      }
+                     
+
         });
     });
 });

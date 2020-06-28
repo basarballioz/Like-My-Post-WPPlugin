@@ -54,7 +54,7 @@ class likeMyPost {
     public function like() {
         //SAFETY
         check_ajax_referer('worldsBestPluginEver', 'nonce');
-        
+
         $post_id = $_POST['post_id'];
         $event = $_POST['event'];
         if ($event == "like") {
@@ -76,9 +76,9 @@ class likeMyPost {
             $likers_IP = array();
         }
         if (in_array($user_IP, $likers_IP)) {
-            return true;                        //ALREADY LIKED (SHOW "like") button
+            return true;                        //SHOW "DISLIKE" BUTTON FOR USERS WHO ALREADY LIKED
         } else {
-            return false;                       //SHOW "dislike" button
+            return false;                       //SHOW "LIKE" BUTTON FOR USERS WHO HAVE NOT LIKED THE POST YET 
         }
     }
 

@@ -13,6 +13,7 @@ function admin_panel() {
     }
 ?>
 
+
     <div class="wrap" style="font-size: 15px; text-align:center;">
         <h3 style="color: #00BFFF; font-size: 30px;"> =Like My Post - Mostly Liked Tags= </h3>
         <p style="font-size: 20px;" > Most liked tags are listed by descending order. You can easily monitor them from this page. </p>
@@ -21,7 +22,7 @@ function admin_panel() {
 
         //Using Wordpress Database Class
         global $wpdb;
-
+        
         //BUILDING PAGES (https://codex.wordpress.org/Class_Reference/wpdb)
         $counter = "SELECT COUNT(DISTINCT terms.term_id)
                           FROM $wpdb->terms AS terms, 
@@ -98,5 +99,4 @@ function admin_panel() {
         ?>
     </div>  
 <?php 
-
 }
